@@ -1,4 +1,4 @@
-# F*CK YOU ADOBE (a.k.a. FYA)
+# F*CK YOU ADOBE (a.k.a. FYA) [![Build status](https://ci.appveyor.com/api/projects/status/l13y7qhoaf2k3jvf?svg=true)](https://ci.appveyor.com/project/Kir-Antipov/fya)
 -------------
 
 ## What is going on?

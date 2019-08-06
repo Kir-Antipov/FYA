@@ -1,0 +1,11 @@
+version: '{build}'
+os: Visual Studio 2017
+cache: C:\Users\appveyor\.nuget\packages
+deploy: off
+artifacts:
+  - path: 'packages\*.nupkg'
+
+build_script:
+  - dotnet restore
+  - dotnet build --configuration Release 
+  - dotnet pack -c Release -o ../../packages --no-build /p:BuildNumber=%APPVEYOR_BUILD_NUMBER%
