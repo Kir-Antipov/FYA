@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FYA": {
+      "commandName": "Project",
+      "commandLineArgs": "shortcut"
+    }
+  }
+}
