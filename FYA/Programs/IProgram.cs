@@ -10,6 +10,8 @@ namespace FYA.Programs
 
         void Run(IEnumerable<string> Arguments);
 
+        string GetHelpText();
+
         void PrintException(string Error);
         void PrintException(Exception Error);
     }

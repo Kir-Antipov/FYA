@@ -23,6 +23,8 @@ namespace FYA.Programs
         #region Functions
         public abstract void Run(IEnumerable<string> Arguments);
 
+        public abstract string GetHelpText();
+
         public virtual void PrintException(Exception Exception) => PrintException(Exception.Message);
         public virtual void PrintException(string Exception)
         {
