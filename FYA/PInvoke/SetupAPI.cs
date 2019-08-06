@@ -57,7 +57,7 @@ namespace FYA.PInvoke
         {
             StringBuilder builder = new StringBuilder(128);
             bool result = SetupDiGetDeviceInstanceId(SetHandle, Device, builder, builder.Capacity, out int requiredSize);
-            if (!result == false && User32.LastError == WinApiError.InsufficientBuffer)
+            if (!result && User32.LastError == WinApiError.InsufficientBuffer)
             {
                 builder.Capacity = requiredSize;
                 result = SetupDiGetDeviceInstanceId(SetHandle, Device, builder, builder.Capacity, out requiredSize);
