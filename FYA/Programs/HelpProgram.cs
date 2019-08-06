@@ -13,12 +13,21 @@ namespace FYA.Programs
         #region Functions
         public override void Run(IEnumerable<string> Arguments)
         {
-            int maxNameLength = Program.Programs.Max(x => x.Name.Length);
-            string format = $"{{0, -{maxNameLength + 10}}}{{1}}";
-            Console.WriteLine();
-            foreach (IProgram program in Program.Programs.OrderBy(x => x.Name))
-                Console.WriteLine(format, program.Name, program.Description);
+            string programName = Arguments.FirstOrDefault();
+            IProgram programToSeeHelp = string.IsNullOrEmpty(programName) ? null : Program.Programs.FirstOrDefault(x => x.Name.Equals(programName, StringComparison.InvariantCultureIgnoreCase));
+            if (programToSeeHelp is null)
+            {
+                int maxNameLength = Program.Programs.Max(x => x.Name.Length);
+                string format = $"{{0, -{maxNameLength + 10}}}{{1}}";
+                Console.WriteLine();
+                foreach (IProgram program in Program.Programs.OrderBy(x => x.Name))
+                    Console.WriteLine(format, program.Name, program.Description);
+            }
+            else
+                Console.WriteLine(programToSeeHelp.GetHelpText());
         }
+
+        public override string GetHelpText() => string.Empty;
         #endregion
     }
 }

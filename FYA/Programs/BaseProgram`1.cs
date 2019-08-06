@@ -8,23 +8,29 @@ namespace FYA.Programs
     public abstract class BaseProgram<TOptions> : BaseProgram
     {
         #region Functions
+        private static Parser CreateParser() => new Parser(settings =>
+        {
+            settings.AutoVersion = false;
+            settings.AutoHelp = false;
+            settings.CaseSensitive = false;
+            settings.HelpWriter = null;
+        });
+
         public override void Run(IEnumerable<string> Arguments)
         {
-            Parser parser = new Parser(settings =>
-            {
-                settings.AutoVersion = false;
-                settings.AutoHelp = false;
-                settings.CaseSensitive = false;
-                settings.HelpWriter = null;
-            });
-
-            ParserResult<TOptions> result = parser.ParseArguments<TOptions>(Arguments);
+            ParserResult<TOptions> result = CreateParser().ParseArguments<TOptions>(Arguments);
             result
                 .WithNotParsed(x => { Console.WriteLine(GetHelpText(result)); })
                 .WithParsed(Run);
         }
 
         public abstract void Run(TOptions Options);
+
+        public override string GetHelpText()
+        {
+            ParserResult<TOptions> result = CreateParser().ParseArguments<TOptions>(new string[0]);
+            return GetHelpText(result);
+        }
 
         public virtual string GetHelpText(ParserResult<TOptions> Result)
         {

@@ -20,7 +20,7 @@ namespace FYA.Programs
             shortcut.TargetPath = Path.Combine(location, $"{(Options.ShowCommandLine ? "FYA" : "HFYA")}.exe");
             shortcut.WorkingDirectory = location;
             shortcut.IconLocation = Options.Icon;
-            shortcut.Arguments = $"crutchrun {Parser.Default.FormatCommandLine(new CrutchRunOptions(Options.ID, Options.Name, Options.Wait, Options.Path, Options.WorkingDirectory))}";
+            shortcut.Arguments = $"crutchrun {Parser.Default.FormatCommandLine(new CrutchRunOptions(Options.Path, Options.ID, Options.Name, Options.Wait, Options.WorkingDirectory))}";
             shortcut.Save();
         }
     }

@@ -7,6 +7,9 @@ namespace FYA.Options
     public class ShortcutOptions
     {
         #region Var
+        [Option('p', "path", Required = true, HelpText = "Application path")]
+        public string Path { get; }
+
         [Option('i', "id", Required = true, SetName = "cardID", HelpText = "Video card's instance id")]
         public string ID { get; }
 
@@ -15,9 +18,6 @@ namespace FYA.Options
 
         [Option('w', "wait", HelpText = "The time the video card is disabled")]
         public int Wait { get; }
-
-        [Option('p', "path", Required = true, HelpText = "Application path")]
-        public string Path { get; }
 
         [Option('d', "directory", HelpText = "Application working directory")]
         public string WorkingDirectory { get; }
@@ -33,7 +33,7 @@ namespace FYA.Options
         #endregion
 
         #region Init
-        public ShortcutOptions(string ID, string Name, int Wait, string Path, string WorkingDirectory, string Save, string Icon, bool ShowCommandLine)
+        public ShortcutOptions(string Path, string ID, string Name, int Wait, string WorkingDirectory, string Save, string Icon, bool ShowCommandLine)
         {
             if (!string.IsNullOrEmpty(Path))
             {
