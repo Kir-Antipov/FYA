@@ -3,6 +3,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net45;</TargetFrameworks>
+    <PlatformTarget>x64</PlatformTarget>
     <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputType>Exe</OutputType>
